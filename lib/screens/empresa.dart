@@ -22,6 +22,49 @@ class _EmpresaPageState extends State<EmpresaPage> {
   Gastos gasto;
   _EmpresaPageState(this.gasto);
 
+TextEditingController editNameControl = TextEditingController();
+  TextEditingController editValueControl = TextEditingController();
+
+  void editExpense(DescExpenses desc){
+      setState(() {
+        showDialog(context: context,
+          builder: (context){
+            return AlertDialog(
+              title: const Text("Editar Gasto:"),
+              content: Column(children: [TextField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      hintText: "Novo nome",
+                    ),
+                    controller: editNameControl,
+                  ),
+                  TextField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      hintText: "Novo valor",
+                    ),
+                    controller: editValueControl,
+                  ),
+                  ],),
+                  
+                  
+              actions: [
+                ElevatedButton(onPressed: (){Navigator.of(context).pop();}, child: const Text("Cancelar"),),
+                ElevatedButton(onPressed: (){
+                  Navigator.of(context).pop();
+                  setState(() {
+                    desc.desc = editNameControl.text.toString();
+                    desc.expense = double.parse(editValueControl.text.toString());
+                  });
+                  
+                  }, 
+                  child: const Text("Editar"),),
+              ],
+            );
+          });
+      });
+    }
+
   @override
 
   Widget build(BuildContext context) {
@@ -56,7 +99,7 @@ class _EmpresaPageState extends State<EmpresaPage> {
             } else {
               return ListTile(
                 leading: IconButton(
-                    onPressed: () {},
+                    onPressed: () {editExpense(gasto.expenses[index-1]);},
                     icon: const Icon(
                       Icons.edit,
                       color: Colors.grey,
@@ -68,13 +111,6 @@ class _EmpresaPageState extends State<EmpresaPage> {
                 subtitle: Text(
                   "R\$${gasto.expenses[index-1].expense}",
                   style: txtstyle,
-                ),
-                trailing: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.add,
-                    color: Colors.green,
-                  ),
                 ),
               );
             }

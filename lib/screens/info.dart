@@ -38,7 +38,12 @@ class _InfoPageState extends State<InfoPage> {
           children: [
             Column(
               children: [
-                    Text("Place all information in this page.", style: txtstyle,),
+                    Text("Porque Poupar?", style: txtstyle,),
+                    Text("Porque Investir?", style: txtstyle,),
+                    Text("Como Começar?", style: txtstyle,),
+                    Text("O Que É Baixo Risco?", style: txtstyle,),
+                    Text("O Que É Médio Risco?", style: txtstyle,),
+                    Text("O Que É Alto Risco?", style: txtstyle,),
               ]
             ),
           ],

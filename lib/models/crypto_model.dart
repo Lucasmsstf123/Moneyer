@@ -14,7 +14,7 @@ class Crypto{
       acronym: json['coins'][0]['coin'],
       marketPrice: json['coins'][0]['regularMarketPrice'],
       daylow: json['coins'][0]['regularMarketDayLow'],
-      dayhigh: json['coins'][0]['regularMarketDayhigh'],
+      dayhigh: json['coins'][0]['regularMarketDayHigh'],
       img: json['coins'][0]['coinImageUrl'],
     );
   }

@@ -36,7 +36,7 @@ Future<Crypto?> fetch(String item) async {
   return Crypto.fromJson(jsonDecode(response.body));
 }*/
 
-Future<Crypto?> fetchCoin(String coin) async {
+Future<Crypto> fetchCoin(String coin) async {
   final response = await http
       .get(Uri.parse('https://brapi.dev/api/v2/crypto?coin=$coin'));
 
